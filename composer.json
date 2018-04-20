@@ -1,0 +1,19 @@
+{
+  "name": "weblabnl/CURL",
+  "version": "1.0",
+  "require": {},
+  "require-dev": {
+    "codedungeon/phpunit-result-printer": "^0.14.0",
+    "phpunit/phpunit": "~6.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Weblab\\CURL\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Weblab\\CURL\\Tests\\": "tests"
+    }
+  }
+}
