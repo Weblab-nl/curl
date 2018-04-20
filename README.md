@@ -78,4 +78,11 @@ if ($result->getStatus === 200) {
     }
 }
 ```
-    
+
+#### Check if a file exists
+```php
+$result = Weblab\CURL::doesFileExist('https://www.weblab.nl/img/logo.png')
+if ($result) {
+    // file exists
+}
+```

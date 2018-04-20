@@ -156,8 +156,8 @@ class Request {
     /**
      * Set authorization header bearer token
      *
-     * @param $token
-     * @return mixed
+     * @param   $token
+     * @return  mixed
      */
     public function setBearer($token) {
         return $this->setHeader('Authorization', 'Bearer ' . $token);
@@ -267,6 +267,8 @@ class Request {
 
     /**
      * Checks if a file exists
+     *
+     * @return bool
      */
     public function doesFileExist($url) {
         // Setup connection
