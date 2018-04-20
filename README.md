@@ -15,7 +15,7 @@ Installation
 Using the Library
 -----------------
 
-Make a POST request to a REST API
+#### Make a POST request to a REST API
 
 ```php
 $params = [
@@ -33,7 +33,7 @@ if ($result->getStatus() === 201) {
 }    
 ```
     
-Make a PATCH request to a REST API (without helper functions)
+#### Make a PATCH request to a REST API (without helper functions)
 
 ```php
 $url = 'https://api.weblab.nl/users/1';
@@ -54,7 +54,7 @@ if ($result->getStatus() === 200) {
 }
 ```
     
-Make a GET request. (Content-Type: application/json are automatically decoded)
+#### Make a GET request (Content-Type: application/json are automatically decoded)
 
 ```php
 $result = Weblab\CURL::get('https://api.weblab.nl/users', ['limit' => '1']);
