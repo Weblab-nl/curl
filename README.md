@@ -25,7 +25,7 @@ $params = [
 
 $url = 'https://api.weblab.nl/users';
 
-$result = Weblab\CURL::setBearer('some_access_token')
+$result = Weblab\CURL\CURL::setBearer('some_access_token')
     ->post($url, $params);
     
 if ($result->getStatus() === 201) {
@@ -42,7 +42,7 @@ $params = [
     'ankievisser01@test.com'
 ];
 
-$request = (new Weblab\Request())
+$request = (new Weblab\CURL\Request())
     ->setOption(CURLOPT_URL, $url)
     ->setOption(CURLOPT_POSTFIELDS, http_build_query($params))
     ->setOption(CURLOPT_CUSTOMREQUEST, 'PATCH')
@@ -57,7 +57,7 @@ if ($result->getStatus() === 200) {
 #### Make a GET request (Content-Type: application/json are automatically decoded)
 
 ```php
-$result = Weblab\CURL::get('https://api.weblab.nl/users', ['limit' => '1']);
+$result = Weblab\CURL\CURL::get('https://api.weblab.nl/users', ['limit' => '1']);
 
 /**
  * cURL result body:
@@ -81,7 +81,7 @@ if ($result->getStatus === 200) {
 
 #### Check if a file exists
 ```php
-$result = Weblab\CURL::doesFileExist('https://www.weblab.nl/img/logo.png')
+$result = Weblab\CURL\CURL::doesFileExist('https://www.weblab.nl/img/logo.png')
 if ($result) {
     // file exists
 }
