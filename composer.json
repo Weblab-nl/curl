@@ -1,6 +1,7 @@
 {
   "name": "weblabnl/curl",
-  "version": "1.0.1",
+  "version": "1.0.2",
+  "license": "Apache-2.0",
   "require": {},
   "require-dev": {
     "codedungeon/phpunit-result-printer": "^0.14.0",
