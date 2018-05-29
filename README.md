@@ -72,7 +72,7 @@ $result = Weblab\CURL\CURL::get('https://api.weblab.nl/users', ['limit' => '1'])
  * }
  */
 
-if ($result->getStatus === 200) {
+if ($result->getStatus() === 200) {
     foreach ($result->getResults()->data as $user) {
         // $user object
     }
