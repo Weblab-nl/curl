@@ -291,6 +291,42 @@ class Request {
     }
 
     /**
+     * Get the response code of a url
+     *
+     * @return bool
+     */
+    public function getStatus(string $url) {
+        // Setup connection
+        $resource = curl_init($url);
+
+        // Setup cURL options
+        curl_setopt($resource, CURLOPT_NOBODY, true);
+        curl_setopt($resource, CURLOPT_CONNECTTIMEOUT, 10);
+        curl_setopt($resource,CURLOPT_HEADER,true);
+        curl_setopt($resource,CURLOPT_RETURNTRANSFER,true);
+        curl_setopt($resource, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($resource, CURLOPT_MAXREDIRS, 10);
+        curl_setopt($resource,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows NT 6.1; rv:65.0) Gecko/20100101 Firefox/65.0');
+        curl_setopt($resource, CURLOPT_HTTPGET, true);
+        curl_setopt($resource, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($resource, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($resource, CURLOPT_SSL_VERIFYPEER, 0);
+
+
+        // Execute cURL
+        curl_exec($resource);
+
+        // Get the HTTP status code
+        $httpCode = curl_getinfo($resource, CURLINFO_HTTP_CODE);
+
+        // Close the connection
+        curl_close($resource);
+
+        // Return the status
+        return $httpCode;
+    }
+
+    /**
      * Actually executes the cURL request
      *
      * @return Result
