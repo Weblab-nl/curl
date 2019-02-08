@@ -1,6 +1,6 @@
 {
   "name": "weblabnl/curl",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "license": "Apache-2.0",
   "require": {},
   "require-dev": {
