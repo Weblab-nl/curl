@@ -344,7 +344,7 @@ class Request {
         $headers = [];
         foreach ($this->headers as $key => $value) {
             if (!empty($value)) {
-                $headers[] = implode(' : ', [$key, $value]);
+                $headers[] = implode(': ', [$key, $value]);
             }
             else {
                 $this->headers[] = $key;
