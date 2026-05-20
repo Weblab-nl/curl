@@ -2,6 +2,7 @@
 
 namespace Weblab\CURL;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Weblab\CURL\Tests\TestCase;
 
 /**
@@ -10,9 +11,7 @@ use Weblab\CURL\Tests\TestCase;
  */
 class ResultTest extends TestCase {
 
-    /**
-     * @dataProvider resultData
-     */
+    #[DataProvider('resultData')]
     public function testResult($body, $status, $headers) {
         $result = new Result($body, $status, $headers);
 
@@ -21,7 +20,7 @@ class ResultTest extends TestCase {
         $this->assertEquals('test', $result->getHeader('random-header'));
     }
 
-    public function resultData() {
+    public static function resultData() {
         return [
             [
                 '{"user":"user2"}',
