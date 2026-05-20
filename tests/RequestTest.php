@@ -21,7 +21,7 @@ class RequestTest extends TestCase {
 
     public function testGet() {
         $request = $this->getMockBuilder(Request::class)
-            ->setMethods(['run'])
+            ->onlyMethods(['run'])
             ->getMock();
         $request
             ->expects($this->once())
@@ -35,12 +35,12 @@ class RequestTest extends TestCase {
         $expectedSettings[CURLOPT_CUSTOMREQUEST]    = 'GET';
         $expectedSettings[CURLOPT_URL]              = 'url?userId=6';
 
-        $this->assertAttributeEquals($expectedSettings,'settings', $request);
+        $this->assertEquals($expectedSettings, $this->getSettings($request));
     }
 
     public function testPost() {
         $request = $this->getMockBuilder(Request::class)
-            ->setMethods(['run'])
+            ->onlyMethods(['run'])
             ->getMock();
         $request
             ->expects($this->once())
@@ -54,12 +54,12 @@ class RequestTest extends TestCase {
         $expectedSettings[CURLOPT_URL]              = 'url';
         $expectedSettings[CURLOPT_POSTFIELDS]       = 'userId=6';
 
-        $this->assertAttributeEquals($expectedSettings,'settings', $request);
+        $this->assertEquals($expectedSettings, $this->getSettings($request));
     }
 
     public function testPut() {
         $request = $this->getMockBuilder(Request::class)
-            ->setMethods(['run'])
+            ->onlyMethods(['run'])
             ->getMock();
         $request
             ->expects($this->once())
@@ -73,12 +73,12 @@ class RequestTest extends TestCase {
         $expectedSettings[CURLOPT_URL]              = 'url';
         $expectedSettings[CURLOPT_POSTFIELDS]       = 'userId=6';
 
-        $this->assertAttributeEquals($expectedSettings,'settings', $request);
+        $this->assertEquals($expectedSettings, $this->getSettings($request));
     }
 
     public function testPatch() {
         $request = $this->getMockBuilder(Request::class)
-            ->setMethods(['run'])
+            ->onlyMethods(['run'])
             ->getMock();
         $request
             ->expects($this->once())
@@ -92,12 +92,12 @@ class RequestTest extends TestCase {
         $expectedSettings[CURLOPT_URL]              = 'url';
         $expectedSettings[CURLOPT_POSTFIELDS]       = 'userId=6';
 
-        $this->assertAttributeEquals($expectedSettings,'settings', $request);
+        $this->assertEquals($expectedSettings, $this->getSettings($request));
     }
 
     public function testDelete() {
         $request = $this->getMockBuilder(Request::class)
-            ->setMethods(['run'])
+            ->onlyMethods(['run'])
             ->getMock();
         $request
             ->expects($this->once())
@@ -109,7 +109,14 @@ class RequestTest extends TestCase {
         $expectedSettings[CURLOPT_CUSTOMREQUEST]    = 'DELETE';
         $expectedSettings[CURLOPT_URL]              = 'url?userId=6';
 
-        $this->assertAttributeEquals($expectedSettings,'settings', $request);
+        $this->assertEquals($expectedSettings, $this->getSettings($request));
+    }
+
+    private function getSettings(Request $request): array {
+        $property = new \ReflectionProperty($request, 'settings');
+        $property->setAccessible(true);
+
+        return $property->getValue($request);
     }
 
 }

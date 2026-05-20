@@ -4,8 +4,7 @@
   "license": "Apache-2.0",
   "require": {},
   "require-dev": {
-    "codedungeon/phpunit-result-printer": "^0.14.0",
-    "phpunit/phpunit": "~6.0"
+    "phpunit/phpunit": "^11.5.50"
   },
   "autoload": {
     "psr-4": {
